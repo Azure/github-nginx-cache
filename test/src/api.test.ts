@@ -1,5 +1,7 @@
+import { configuration } from "./config";
+
 describe("API", () => {
   it("to work", async () => {
-    expect("a").toEqual("a");
+    expect(configuration.env).toEqual("test");
   });
 });
