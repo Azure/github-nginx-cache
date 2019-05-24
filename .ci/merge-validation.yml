@@ -1,0 +1,9 @@
+pool:
+  vmImage: "Ubuntu 16.04"
+
+trigger:
+  - master
+
+steps:
+  - task: Docker@2
+    displayName: "Build docker container"
