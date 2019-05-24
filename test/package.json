@@ -1,0 +1,44 @@
+{
+  "name": "github-nginx-cache-test",
+  "version": "0.1.0",
+  "description": "This project welcomes contributions and suggestions.  Most contributions require you to agree to a\r Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us\r the rights to use your contribution. For details, visit https://cla.microsoft.com.",
+  "scripts": {
+    "test": "jest",
+    "test:ci": "jest --ci --reporters=default --reporters=jest-junit",
+    "lint": "tslint -p tsconfig.json",
+    "test:watch": "jest --watch --coverage=false --config ./config/jest.dev.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Azure/github-nginx-cache.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Azure/github-nginx-cache/issues"
+  },
+  "homepage": "https://github.com/Azure/github-nginx-cache#readme",
+  "devDependencies": {
+    "@types/convict": "^4.2.1",
+    "@types/jest": "^24.0.13",
+    "@types/node-fetch": "^2.3.4",
+    "jest": "^24.8.0",
+    "jest-junit": "^6.4.0",
+    "prettier": "^1.17.1",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@types/node": "^12.0.2",
+    "convict": "^5.0.0",
+    "node-fetch": "^2.6.0",
+    "nodegit": "^0.24.3"
+  },
+  "jest-junit": {
+    "outputDirectory": ".",
+    "outputName": "test-results.xml"
+  }
+}
