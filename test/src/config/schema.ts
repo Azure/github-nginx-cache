@@ -9,4 +9,10 @@ export const configSchema = convict({
     default: "test",
     env: "NODE_ENV",
   },
+  localApiProxyUrl: {
+    doc: "URL for caching api proxy",
+    format: "url",
+    default: "http://api.localhost:8000",
+    env: "localApiProxyUrl",
+  },
 });
