@@ -1,10 +1,13 @@
-import * as Github from "@octokit/rest";
+import Github from "@octokit/rest";
 
 import { configuration } from "./config";
+import { xCacheKey } from "./octokitPlugin";
 import { delay, getHeader } from "./utils";
 
+Github.plugin(xCacheKey);
+
 describe("API", () => {
-  const github = new Github.default({
+  const github = new Github({
     baseUrl: configuration.localApiProxyUrl,
   });
 
