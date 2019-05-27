@@ -1,7 +1,7 @@
 import Github from "@octokit/rest";
 
 import { configuration } from "./config";
-import { xCacheKey } from "./octokitPlugin";
+import { xCacheKey } from "./x-cache-key-plugin";
 import { delay, getHeader } from "./utils";
 
 Github.plugin(xCacheKey);
