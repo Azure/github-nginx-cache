@@ -12,7 +12,7 @@ export const configSchema = convict({
   localApiProxyUrl: {
     doc: "URL for caching api proxy",
     format: "url",
-    default: "http://api.vcap.me:8000", // *.vcap.me resolves to 127.0.0.1 so it can be used for testing subdomain requests to localhost
+    default: "http://localhost:8000/api/", // *.vcap.me resolves to 127.0.0.1 so it can be used for testing subdomain requests to localhost
     env: "localApiProxyUrl",
   },
 });
