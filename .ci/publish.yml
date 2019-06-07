@@ -1,0 +1,22 @@
+trigger:
+  - master
+
+pr: none
+
+
+stages:
+  - stage: Build_Docker
+    jobs:
+      - job: Build_Docker
+        displayName: Build and publish to hub.docker.com
+        pool:
+          vmImage: "Ubuntu-16.04"
+        steps:
+          - task: Docker@2
+            displayName: "Build azuredevx/github-nginx-cache"
+            inputs:
+              containerRegistry: "github-nginx-cache docker"
+              repository: "azuredevx/github-nginx-cache"
+              tags: |
+                $(Build.BuildNumber)
+                latest
