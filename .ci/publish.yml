@@ -3,7 +3,7 @@ trigger:
 
 pr: none
 
-
+name: v1.$(Date:yyyyMMdd)$(Rev:.r)
 stages:
   - stage: Build_Docker
     jobs:
