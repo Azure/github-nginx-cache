@@ -1,11 +1,11 @@
 #!/bin/bash
 
 podhealth() {
-  if [[ -z $podname ]]; then
-    echo "podname is set to ${podname}"
-  else
+  if [[ -z "${podname}" ]]; then
     echo "podname not set"
     return 1
+  else
+    echo "podname is set to ${podname}"
   fi
 
   activepod=$(for i in 0 1; do echo $podname-$i;done | grep -v $HOSTNAME)
@@ -15,11 +15,11 @@ podhealth() {
   curl -I $activepod
 
   # if curl fails then we need to be active otherwise stay passive
-  if [[ $? -ne 0 ]]
+  if [[ "$?" -eq "0" ]]
     then
-      return 0
-    else
       return 1
+    else
+      return 0
   fi
 }
 
