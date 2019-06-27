@@ -15,7 +15,7 @@ podhealth() {
   curl -I $activepod
 
   # if curl fails then we need to be active otherwise stay passive
-  if [[ "$?" -eq "0" ]]
+  if [ $? -eq 0 ]
     then
       return 1
     else
