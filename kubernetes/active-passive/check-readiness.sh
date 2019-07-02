@@ -10,9 +10,11 @@ podhealth() {
 
   activepod=$(for i in 0 1; do echo $podname-$i;done | grep -v $HOSTNAME)
 
-  echo "activepod = ${activepod}"
+  echo "activepod = ${activepod}.${serviceDomain}"
 
-  curl -I $activepod
+  # ${activepod}.${serviceDomain} is the FQDN of a pod
+  # eg mypod.myservice.mynamespace.svc.cluster.local
+  curl -I ${activepod}.${serviceDomain}
 
   # if curl fails then we need to be active otherwise stay passive
   if [ $? -eq 0 ]
