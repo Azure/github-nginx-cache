@@ -6,6 +6,18 @@
 
     docker run -p 8000:80 -d -v ./nginx-logs:/var/log/nginx custom-nginx
 
+### Debug
+
+#### Fish
+
+    docker build -t custom-nginx . && docker run -it -p 8000:80  -v (pwd)/nginx-logs:/var/log/nginx custom-nginx
+    curl localhost:8000/health/alive
+
+#### Bash
+
+    docker build -t custom-nginx . && docker run -it -p 8000:80  -v $(pwd)/nginx-logs:/var/log/nginx custom-nginx
+    curl localhost:8000/health/alive
+
 # Contributing
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a
