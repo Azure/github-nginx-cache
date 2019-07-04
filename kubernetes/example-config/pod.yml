@@ -6,7 +6,7 @@ metadata:
     app: github-nginx-cache
 spec:
   containers:
-    - image: azuredevx/github-nginx-cache:test
+    - image: azuredevx/github-nginx-cache:latest
       name: mypod
       resources:
         requests:
