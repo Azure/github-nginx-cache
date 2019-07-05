@@ -11,6 +11,14 @@ Here is an example how rate-limiting is mitigated for unauthenticated requests a
     docker run -d -p 8000:80 azure-devex/github-nginx-cache
     curl localhost:8000/api/repos/azure/github-nginx-cache
 
+The github domains are mapped as follows:
+
+|                              |                            |
+| ---------------------------- | -------------------------- |
+| api.github.com/\*            | localhost:8000/api/\*      |
+| raw.githubusercontent.com/\* | localhost:8000/raw/\*      |
+| codeload.github.com/\*       | localhost:8000/codeload/\* |
+
 ### CI/CD
 
 Docker publish [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/build/status/Azure.github-nginx-cache%20Publish?branchName=master)](https://dev.azure.com/azure-sdk/public/_build/latest?definitionId=496&branchName=master)
@@ -39,6 +47,25 @@ Docker publish [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/bui
     cd test
     npm ci
     npm run test
+
+### Implementation details
+
+#### Github consistency
+
+The cache is designed for the highest possible github consistency such that it ignores any `Cache-Control` headers that github sends and forces nginx to REVALIDATE for every request. A limitation in nginx means that the lowest value for `proxy_cache_valid` directive is one second. This means that two identical requests to github within the space of one second will HIT (return cached response without revalidating) rather than REVALIDATE.
+
+#### Cache partitioning
+
+The cache may be used for complicated applications where multiple app and oauth tokens are being used to access github. The default behaviour in this case is to parition the cache by token. This means that a request with token A will not leverage any cached content from requests using token B.
+
+This behaviour is for the following reasons.
+
+1. Security - there are edge cases in which using two tokens within one second of each other could cause a response to be leaked to the second request even if the second token was not allowed to access the resource.
+1. Prevent cache churn - if the cache was not partitioned, multiple requests to one api route with different tokens may cause the cache to be evacuated unnecessarily if these tokens have different access permissions.
+
+There may be cases however where this behaviour needs to be overridden at the discretion of the client. For example when using a GitHub app, the token may expire every hour or so in which case the default behaviour would be for the cache to reset every hour which is not desirable.
+
+By setting **X-Cache-Key** header, the cache [will be paritioned](nginx-config/cache_key_logic.conf) on this arbitrary string rather than the token.
 
 # Contributing
 
