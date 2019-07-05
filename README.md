@@ -1,6 +1,6 @@
 ## Github nginx cache
 
-This repo contains nginx configuration tuned to sit in front of github endpoints and provide caching functionality. Github will not rate-limit [conditional requests](localhost:8000/api/repos/azure/github-nginx-cache). The [`proxy_cache_*` nginx directives](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache) force nginx to revalidate any cached content from the upstream server (in this case, github). Revalidation is performed by github as a conditional request, therefore it will not reduce api limits. This works for both authenticated and unauthenticated requests.
+This repo contains nginx configuration tuned to sit in front of github endpoints and provide caching functionality. Github will not rate-limit [conditional requests](https://developer.github.com/v3/#conditional-requests). The [`proxy_cache_*` nginx directives](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache) force nginx to revalidate any cached content from the upstream server (in this case, github). Revalidation is performed by github as a conditional request, therefore it will not reduce api limits. This works for both authenticated and unauthenticated requests.
 
 Here is an example how rate-limiting is mitigated for unauthenticated requests against both https://api.github.com and the cache running on localhost:8000.
 
@@ -41,7 +41,7 @@ Docker publish [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/bui
     docker build -t custom-nginx . && docker run -it -p 8000:80  -v $(pwd)/nginx-logs:/var/log/nginx custom-nginx
     curl localhost:8000/health/alive
 
-### Build
+### Test
 
     # Run image on localhost:8000
     cd test
