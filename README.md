@@ -8,7 +8,7 @@ Here is an example how rate-limiting is mitigated for unauthenticated requests a
 
 ### Quick Start
 
-    docker run -d -p 8000:80 azuredevex/github-nginx-cache
+    docker run -d -p 8000:80 azuredevx/github-nginx-cache
     curl localhost:8000/api/repos/azure/github-nginx-cache
 
 The github domains are mapped as follows:
