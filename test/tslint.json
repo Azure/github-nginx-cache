@@ -1,0 +1,43 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:latest", "tslint-config-prettier", "tslint-plugin-prettier"],
+  "jsRules": {},
+  "rules": {
+    "file-name-casing": [true, "kebab-case"],
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "interface-name": false,
+    "object-literal-sort-keys": false,
+    "no-object-literal-type-assertion": false,
+    "no-console": true,
+    "member-ordering": false,
+    "no-implicit-dependencies": [true, "dev"],
+    "prefer-conditional-expression": false,
+    "no-submodule-imports": false,
+    "no-default-export": true,
+    "prettier": [true, ".prettierrc.yml"],
+    "no-empty-interface": false,
+    "no-floating-promises": true, // No unawaited or caught promises(This could cause process exit in later version of node)
+    "ordered-imports": [
+      true,
+      {
+        "import-sources-order": "case-insensitive",
+        "named-imports-order": "lowercase-last",
+        "grouped-imports": true,
+        "groups": [
+          { "match": "^\\..*$", "order": 20 }, // Have relative imports
+          { "match": ".*", "order": 10 }
+        ]
+      }
+    ],
+    "ban": [
+      true,
+      { "name": "fdescribe", "message": "Don't leave focus tests" },
+      { "name": "fit", "message": "Don't leave focus tests" },
+      { "name": "ftest", "message": "Don't leave focus tests" },
+      { "name": ["describe", "only"], "message": "Don't leave focus tests" },
+      { "name": ["it", "only"], "message": "Don't leave focus tests" },
+      { "name": ["test", "only"], "message": "Don't leave focus tests" }
+    ]
+  },
+  "rulesDirectory": []
+}
