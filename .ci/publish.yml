@@ -1,5 +1,7 @@
 trigger:
-  - master
+  tags:
+    include:
+      - v*
 
 pr: none
 
@@ -18,5 +20,5 @@ stages:
               containerRegistry: "github-nginx-cache docker"
               repository: "azuredevx/github-nginx-cache"
               tags: |
-                $(Build.BuildNumber)
+                $(Build.SourceBranchName)
                 latest
