@@ -17,6 +17,10 @@ steps:
       command: run
       arguments: -p 8000:80 -d testbuild
 
+  - script: sudo apt install libcurl4-openssl-dev libssl-dev
+    displayName: "Install build dependencies"
+    workingDirectory: ./test
+
   - script: npm -s ci
     displayName: "Install dependencies"
     workingDirectory: ./test
