@@ -1,6 +1,6 @@
-## Github nginx cache
+## GitHub nginx cache
 
-This repo contains nginx configuration tuned to sit in front of github endpoints and provide caching functionality. Github will not rate-limit [conditional requests](https://developer.github.com/v3/#conditional-requests). The [`proxy_cache_*` nginx directives](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache) force nginx to revalidate any cached content from the upstream server (in this case, github). Revalidation is performed by nginx as a conditional request, therefore it will not reduce api limits. This works for both authenticated and unauthenticated requests.
+This repo contains nginx configuration tuned to sit in front of GitHub endpoints and provide caching functionality. GitHub will not rate-limit [conditional requests](https://developer.github.com/v3/#conditional-requests). The [`proxy_cache_*` nginx directives](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache) force nginx to revalidate any cached content from the upstream server (in this case, GitHub). Revalidation is performed by nginx as a conditional request, therefore it will not reduce api limits. This works for both authenticated and unauthenticated requests.
 
 Here is an example how rate-limiting is mitigated for unauthenticated requests against both https://api.github.com and the cache running on http://localhost:8000.
 
@@ -11,9 +11,9 @@ Here is an example how rate-limiting is mitigated for unauthenticated requests a
     docker run -d -p 8000:80 azuredevx/github-nginx-cache
     curl localhost:8000/api/repos/azure/github-nginx-cache
 
-The github domains are mapped as follows:
+The GitHub domains are mapped as follows:
 
-| Github URL                   | Cache URL                  |
+| GitHub URL                   | Cache URL                  |
 | ---------------------------- | -------------------------- |
 | api.github.com/\*            | localhost:8000/api/\*      |
 | raw.githubusercontent.com/\* | localhost:8000/raw/\*      |
@@ -52,11 +52,11 @@ Docker publish [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/bui
 
 ### Github consistency
 
-The cache is designed for the highest possible github consistency such that it ignores any `Cache-Control` headers that github sends and forces nginx to REVALIDATE for every request. A limitation in nginx means that the lowest value for `proxy_cache_valid` directive is one second. This means that two identical requests to github within the space of one second will HIT (return cached response without revalidating) rather than REVALIDATE.
+The cache is designed for the highest possible GitHub consistency such that it ignores any `Cache-Control` headers that GitHub sends and forces nginx to REVALIDATE for every request. A limitation in nginx means that the lowest value for `proxy_cache_valid` directive is one second. This means that two identical requests to GitHub within the space of one second will HIT (return cached response without revalidating) rather than REVALIDATE.
 
 ### Cache partitioning
 
-The cache may be used for complicated applications where multiple app and oauth tokens are being used to access github. The default behaviour in this case is to parition the cache by token. This means that a request with token A will not leverage any cached content from requests using token B.
+The cache may be used for complicated applications where multiple app and oauth tokens are being used to access GitHub. The default behaviour in this case is to parition the cache by token. This means that a request with token A will not leverage any cached content from requests using token B.
 
 This behaviour is for the following reasons.
 
