@@ -1,6 +1,6 @@
-## GitHub nginx cache
+## GitHub Nginx cache
 
-This repo contains nginx configuration tuned to sit in front of GitHub endpoints and provide caching functionality. GitHub will not rate-limit [conditional requests](https://developer.github.com/v3/#conditional-requests). The [`proxy_cache_*` nginx directives](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache) force nginx to revalidate any cached content from the upstream server (in this case, GitHub). Revalidation is performed by nginx as a conditional request, therefore it will not reduce api limits. This works for both authenticated and unauthenticated requests.
+This repo contains Nginx configuration tuned to sit in front of GitHub endpoints and provide caching functionality. GitHub will not rate-limit [conditional requests](https://developer.github.com/v3/#conditional-requests). The [`proxy_cache_*` Nginx directives](http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_cache) force nginx to revalidate any cached content from the upstream server (in this case, GitHub). Revalidation is performed by Nginx as a conditional request, therefore it will not reduce api limits. This works for both authenticated and unauthenticated requests.
 
 Here is an example how rate-limiting is mitigated for unauthenticated requests against both https://api.github.com and the cache running on http://localhost:8000.
 
@@ -52,7 +52,7 @@ Docker publish [![Build Status](https://dev.azure.com/azure-sdk/public/_apis/bui
 
 ### Github consistency
 
-The cache is designed for the highest possible GitHub consistency such that it ignores any `Cache-Control` headers that GitHub sends and forces nginx to REVALIDATE for every request. A limitation in nginx means that the lowest value for `proxy_cache_valid` directive is one second. This means that two identical requests to GitHub within the space of one second will HIT (return cached response without revalidating) rather than REVALIDATE.
+The cache is designed for the highest possible GitHub consistency such that it ignores any `Cache-Control` headers that GitHub sends and forces Nginx to REVALIDATE for every request. A limitation in Nginx means that the lowest value for `proxy_cache_valid` directive is one second. This means that two identical requests to GitHub within the space of one second will HIT (return cached response without revalidating) rather than REVALIDATE.
 
 ### Cache partitioning
 
