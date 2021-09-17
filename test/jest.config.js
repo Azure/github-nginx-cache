@@ -10,7 +10,7 @@ const config = {
   collectCoverage: false,
   globals: {
     "ts-jest": {
-      tsConfig: "tsconfig.json",
+      tsconfig: "tsconfig.json",
     },
   },
   setupFiles: ["<rootDir>/jest-setup.ts"],
