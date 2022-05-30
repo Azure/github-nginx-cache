@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/Azure/github-nginx-cache.git"
   },
+  "engines": {
+    "node": "<=14.19.0"
+  },
   "author": "",
   "license": "MIT",
   "bugs": {
