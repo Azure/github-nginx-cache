@@ -1,4 +1,4 @@
-FROM nginx
+FROM mcr.microsoft.com/mirror/docker/library/nginx:1.20
 
 RUN apt-get update; apt-get install -y curl
 
