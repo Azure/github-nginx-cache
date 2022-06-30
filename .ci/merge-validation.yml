@@ -17,10 +17,10 @@ steps:
       command: run
       arguments: -p 8000:80 -d testbuild
 
-  - script: npm install
+  - script: npm -s ci
     displayName: "Install dependencies"
     workingDirectory: ./test
 
-  - script: npm run test
+  - script: npm run -s test
     displayName: "Run tests"
     workingDirectory: ./test
