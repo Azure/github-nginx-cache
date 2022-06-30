@@ -1,6 +1,6 @@
 {
   "name": "github-nginx-cache-test",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "This project welcomes contributions and suggestions.  Most contributions require you to agree to a\r Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us\r the rights to use your contribution. For details, visit https://cla.microsoft.com.",
   "scripts": {
     "test": "jest",
@@ -33,8 +33,10 @@
   },
   "dependencies": {
     "@octokit/rest": "^16.27.0",
+    "@types/convict-format-with-validator": "^6.0.2",
     "@types/node": "^12.0.2",
-    "convict": "^5.0.0",
+    "convict": "^6.2.3",
+    "convict-format-with-validator": "^6.2.0",
     "node-fetch": "^2.6.1",
     "nodegit": "^0.27.0"
   },
