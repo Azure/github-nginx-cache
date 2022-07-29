@@ -1,9 +1,6 @@
 import convict from "convict";
-import convict_format_with_validator from "convict-format-with-validator";
 
 export type Env = "test";
-
-convict.addFormats(convict_format_with_validator);
 
 export const configSchema = convict({
   env: {
