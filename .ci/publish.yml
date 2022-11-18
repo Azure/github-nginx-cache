@@ -2,6 +2,8 @@ trigger:
   tags:
     include:
       - v*
+variables:
+  Codeql.Enabled: true
 
 pr: none
 
