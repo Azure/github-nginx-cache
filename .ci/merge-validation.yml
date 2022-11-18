@@ -4,6 +4,9 @@ pool:
 trigger:
   - main
 
+variables:
+  Codeql.Enabled: true
+
 steps:
   - task: Docker@2
     displayName: Build docker container
